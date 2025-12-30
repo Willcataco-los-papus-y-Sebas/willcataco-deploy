@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: willcataco-prod-frontend
+  labels:
+    app: willcataco-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: willcataco-frontend
+      environment: prod
+  template:
+    metadata:
+      labels:
+        app: willcataco-frontend
+        environment: prod
+    spec:
+      containers:
+        - name: willcataco-frontend
+          image: ghcr.io/sudoers-01/willcataco-frontend:latest
+          ports:
+            - containerPort: 4200
+          envFrom:
+            - secretRef:
+                name: willcataco-frontend-env
