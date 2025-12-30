@@ -4,8 +4,9 @@ metadata:
   name: willcataco-prod-frontend
   annotations:
     kubernetes.io/ingress.class: "traefik"
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
 spec:
+  ingressClassName: traefik
   rules:
     - host: willcataco.site
       http:
