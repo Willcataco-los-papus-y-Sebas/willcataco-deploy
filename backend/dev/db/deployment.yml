@@ -20,9 +20,10 @@ spec:
         envFrom:
         - secretRef:
             name: postgres-secrets-dev
+
         volumeMounts:
-        - mountPath: /var/lib/postgresql/data
-          name: postgres-storage
+        - name: postgres-storage
+          mountPath: /var/lib/postgresql
       volumes:
       - name: postgres-storage
         persistentVolumeClaim:
