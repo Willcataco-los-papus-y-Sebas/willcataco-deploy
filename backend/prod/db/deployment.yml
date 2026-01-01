@@ -21,7 +21,7 @@ spec:
         - secretRef:
             name: postgres-secrets-prod
         volumeMounts:
-        - mountPath: /var/lib/postgresql/data
+        - mountPath: /var/lib/postgresql
           name: postgres-storage
       volumes:
       - name: postgres-storage
