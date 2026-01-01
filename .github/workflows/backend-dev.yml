@@ -1,0 +1,50 @@
+name: Update Backend DEV Image
+
+on:
+  repository_dispatch:
+    types: [update-backend-dev]
+
+jobs:
+  update-dev:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract payload data
+        id: extract
+        run: |
+          IMAGE="${{ github.event.client_payload.image }}"
+          echo "New image: $IMAGE"
+          echo "image=$IMAGE" >> $GITHUB_OUTPUT
+
+      - name: Update backend dev deployment
+        run: |
+          IMAGE="${{ steps.extract.outputs.image }}"
+          FILE="backend/dev/deployment.yml"
+          
+          if [ ! -f "$FILE" ]; then
+            echo "Error: $FILE does not exist"
+            exit 1
+          fi
+
+          echo "Updating $FILE to use $IMAGE"
+          sed -i "s|image: .*|image: ${IMAGE}|" "$FILE"
+          
+          # Verify the change
+          grep "image:" "$FILE"
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          
+          git add backend/dev/deployment.yml
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update backend DEV image to ${{ steps.extract.outputs.image }}"
+            git push
+          fi
