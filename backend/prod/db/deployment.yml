@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-prod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-prod
+  template:
+    metadata:
+      labels:
+        app: postgres-prod
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:18-alpine
+        ports:
+        - containerPort: 5432
+        envFrom:
+        - secretRef:
+            name: postgres-secrets-prod
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgres-storage
+      volumes:
+      - name: postgres-storage
+        persistentVolumeClaim:
+          claimName: postgres-pvc-prod
+
