@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: ghcr.io/willcataco-los-papus-y-sebas/willcataco-server:dev-86fa6acec9b96a524a6fce5ba2869225b42bc9d5
+        image: ghcr.io/willcataco-los-papus-y-sebas/willcataco-server:dev-604074115c295eb88eeaeec5a985f33a3a5e25af
         ports:
         - containerPort: 8000
         envFrom:
