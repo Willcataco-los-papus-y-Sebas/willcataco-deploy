@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: backend-ingress-dev
 spec:
+  ingressClassName: nginx
   rules:
   - host: dev-api.willcataco.site
     http:

@@ -3,10 +3,9 @@ kind: Ingress
 metadata:
   name: willcataco-prod-frontend
   annotations:
-    kubernetes.io/ingress.class: "traefik"
-    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
+    kubernetes.io/ingress.class: "nginx"
 spec:
-  ingressClassName: traefik
+  ingressClassName: nginx
   rules:
     - host: willcataco.site
       http:

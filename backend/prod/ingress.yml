@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: backend-ingress-prod
 spec:
+  ingressClassName: nginx
   rules:
   - host: api.willcataco.site
     http:
