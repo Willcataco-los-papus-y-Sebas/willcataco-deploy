@@ -26,3 +26,5 @@ spec:
           value: postgres-dev
         - name: DB_PORT
           value: "5432"
+        - name: ENVIRONMENT
+          value: development

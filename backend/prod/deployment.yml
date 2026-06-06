@@ -26,3 +26,5 @@ spec:
           value: postgres-prod
         - name: DB_PORT
           value: "5432"
+        - name: ENVIRONMENT
+          value: production
