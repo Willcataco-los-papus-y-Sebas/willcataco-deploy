@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: willcataco-dev-frontend
+  namespace: willcataco-dev
   annotations:
     kubernetes.io/ingress.class: "nginx"
 spec:
