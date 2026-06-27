@@ -19,6 +19,6 @@ spec:
     spec:
       containers:
         - name: willcataco-frontend
-          image: ghcr.io/willcataco-los-papus-y-sebas/willcataco:dev-a9f841676d34426eb492b166a40c1ba9e91e6e28
+          image: ghcr.io/willcataco-los-papus-y-sebas/willcataco:dev-1f632ccede59f09d54645bc0a1d3f6be6f0470ad
           ports:
             - containerPort: 80
