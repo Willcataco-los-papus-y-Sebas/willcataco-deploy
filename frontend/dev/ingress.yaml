@@ -5,8 +5,13 @@ metadata:
   namespace: willcataco-dev
   annotations:
     kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - dev-willcataco.chakisoft.com
+      secretName: frontend-tls-dev
   rules:
     - host: dev-willcataco.chakisoft.com
       http:

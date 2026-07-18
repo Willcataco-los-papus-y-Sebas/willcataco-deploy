@@ -3,8 +3,14 @@ kind: Ingress
 metadata:
   name: backend-ingress-prod
   namespace: willcataco-prod
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - api-willcataco.chakisoft.com
+    secretName: backend-api-tls-prod
   rules:
   - host: api-willcataco.chakisoft.com
     http:
